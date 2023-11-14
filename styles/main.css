@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+:root {
+  --StatusSelected: hsl(220, 98%, 61%);
+  --CheckBackground: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+
+  /* ### Light Theme */
+  --HeaderTitle: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --CheckBoxAndCompleted: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --Linear1: hsl(192, 30%, 44%);
+  --Linear2: hsl(280, 87%, 65%);
+
+  /* ### Dark Theme */
+  --BackgroundBottom: hsl(235, 21%, 11%);
+  --BackgroundFieldsDark: hsl(235, 24%, 19%);
+  --NotCompletedDark: hsl(234, 39%, 85%);
+  --LightGrayishBlueHover: hsl(236, 33%, 92%); /* hover */
+  --InputStatusText: hsl(234, 11%, 52%);
+  --CompletedDark: hsl(233, 14%, 35%);
+  --CheckBoxBorderDark: hsl(237, 14%, 26%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+
+body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: var(--BackgroundBottom);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-width: 540px;
+  height: 40vh;
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+header .title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 12px;
+  color: var(--HeaderTitle);
+}
+
+header .changeTheme {
+  background: transparent;
+  border: none;
+}
+
+.todo-input {
+  width: 100%;
+  margin: 30px 0 0 0;
+  display: flex;
+  background: var(--BackgroundFieldsDark);
+  height: 60px;
+  padding: 20px;
+  align-items: center;
+}
+
+.checkbox {
+  border-radius: 50%;
+  border: 1px solid var(--CheckBoxBorderDark);
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+  appearance: none;
+}
+
+.todo-input .checkbox:hover {
+  border-color: linear-gradient(var(--Linear1), var(--Linear2)),
+    linear-gradient(var(--checkBackground));
+}
+
+.todo-input #input-add-task {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--InputStatusText);
+  padding: 0 0 0 15px;
+}
+
+.todo-container {
+  width: 100%;
+  display: flex;
+  height: 360px;
+  box-shadow: 0 20px 100px rgb(0 0 0 / 20%);
+  margin: 40px 0 0 0;
+  align-items: center;
+}
+
+.todo-container .todo-tasks {
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.todo-container .todo-tasks::-webkit-scrollbar {
+  display: none;
+}
+
+.todo-container .todo-tasks .task {
+  width: 100%;
+  height: 60px;
+  background-color: var(--BackgroundFieldsDark);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--CompletedDark);
+  color: var(--NotCompletedDark);
+  padding: 0 20px 0 20px;
+}
+
+span {
+  padding: 0 0 0 15px;
+}
+
+.status-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--BackgroundFieldsDark);
+  height: 50px;
+  padding: 20px;
+}
+
+.status-button,
+.items-count {
+  font-size: 14px;
+  font-weight: 400px;
+  color: var(--InputStatusText);
+}
+
+.status-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.status-task {
+  gap: 10px;
+}
+
+.status-button:hover {
+  color: var(--HeaderTitle);
+}
+
+.items-left,
+.clear-task {
+  width: 25%;
+}
+
+.status-task {
+  width: 50%;
+  text-align: center;
+}
+
+.clear-task {
+  text-align: center;
+}
+
+main {
+  width: 540px;
+  margin: 80px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/utils.css" />
+  </head>
+  <body class="dark-theme">
+    <main>
+      <header>
+        <div class="title">TODO</div>
+        <button class="changeTheme">
+          <img src="/images/icon-sun.svg" alt="" />
+        </button>
+      </header>
+      <section class="todo-input">
+        <input id="add-task" class="checkbox checked" type="checkbox" />
+        <input
+          id="input-add-task"
+          class="todo"
+          placeholder="Create a new todo..."
+        />
+      </section>
+      <section class="todo-container"></section>
+      <section class="status-container">
+        <div class="items-left">
+          <p class="items-count">5 items left</p>
+        </div>
+        <div class="status-task">
+          <button class="status-button">All</button>
+          <button class="status-button">Active</button>
+          <button class="status-button">Completed</button>
+        </div>
+        <div class="clear-task">
+          <button class="status-button">Clear Completed</button>
+        </div>
+      </section>
+    </main>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
