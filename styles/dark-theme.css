@@ -1,0 +1,21 @@
+header .dark-theme-button {
+  background: url(../images/icon-moon.svg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-width: 540px;
+  height: 40vh;
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}

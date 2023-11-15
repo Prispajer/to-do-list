@@ -1,7 +1,8 @@
 const addTask = document.querySelector("#input-add-task");
 const toDoContainer = document.querySelector(".todo-container");
+const deleteButtons = document.querySelectorAll(".delete-button");
 
-const toDoList = [
+let toDoList = [
   {
     id: 1,
     name: "Complete online JavaScript course",
@@ -40,16 +41,15 @@ function createToDoList() {
       ${toDoList
         .map(
           (task) => `
-        <li class="task">
-          <input class="checkbox ${
-            task.completed ? "checked" : ""
-          }" type="checkbox" data-task-id="${task.id}" />
-          <span>${task.name}</span>
-        </li>
+          <li class="task ${task.completed ? "checked" : ""}">
+            <input class="checkbox" type="checkbox" data-task-id="${task.id}" />
+            <span>${task.name}</span>
+            <button class="delete-button"></button>
+          </li>
       `
         )
         .join("")}
-    </ul>
+  </ul>
     `;
   toDoContainer.innerHTML = htmlTemplate;
 }
@@ -57,7 +57,8 @@ function createToDoList() {
 createToDoList(toDoList);
 
 function deleteItem(itemId) {
-  const newResult = toDoList.filter((item) => item !== itemId);
+  toDoList = toDoList.filter((item) => item.id !== itemId);
+  createToDoList();
 }
 
 function addItem(name) {
@@ -81,4 +82,8 @@ addTask.addEventListener("keydown", (event) => {
   }
 });
 
-const todoLists = document.querySelectorAll(".todo-list");
+deleteButtons.forEach((deleteButton) => {
+  deleteButton.addEventListener("click", () => {
+    console.log("siema");
+  });
+});

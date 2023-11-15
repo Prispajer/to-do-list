@@ -1,9 +1,0 @@
-.completed {
-  text-decoration: line-through;
-  color: var(--CompletedDark);
-}
-
-.checked:checked {
-  background: var(--CheckBackground);
-  appearance: default;
-}
