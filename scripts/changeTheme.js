@@ -1,8 +1,14 @@
-const changeTheme = document.querySelector("#theme");
+const changeThemeButton = document.querySelector(".changeThemeButton");
 
-changeTheme.addEventListener("click", () => {
-  document.body.classList.remove("theme-light", "theme-dark");
-  document.body.classList.add(
-    changeTheme.checked ? "theme-light" : "theme-dark"
-  );
+changeThemeButton.addEventListener("click", () => {
+  const body = document.body;
+  const isDarkTheme = body.classList.contains("dark-theme");
+
+  if (isDarkTheme) {
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
+  } else {
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
+  }
 });

@@ -1,11 +1,13 @@
-header .light-theme-button {
+@import "colors.css";
+
+body.light-theme .changeThemeButton {
   background: url(../images/icon-sun.svg);
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
-header::before {
+body.light-theme header::before {
   content: "";
   position: absolute;
   top: 0;

@@ -1,4 +1,4 @@
-const addTask = document.querySelector("#input-add-task");
+const addTask = document.querySelector("#add-task-input");
 const toDoContainer = document.querySelector(".todo-container");
 const deleteButtons = document.querySelectorAll(".delete-button");
 

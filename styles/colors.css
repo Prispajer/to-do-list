@@ -1,0 +1,26 @@
+:root {
+  --StatusSelected: hsl(220, 98%, 61%);
+  --CheckBackground: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+
+  /* ### Light Theme */
+  --HeaderTitle: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --CheckBoxAndCompleted: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --Linear1: hsl(192, 30%, 44%);
+  --Linear2: hsl(280, 87%, 65%);
+
+  /* ### Dark Theme */
+  --BackgroundBottom: hsl(235, 21%, 11%);
+  --BackgroundFieldsDark: hsl(235, 24%, 19%);
+  --NotCompletedDark: hsl(234, 39%, 85%);
+  --LightGrayishBlueHover: hsl(236, 33%, 92%); /* hover */
+  --InputStatusText: hsl(234, 11%, 52%);
+  --CompletedDark: hsl(233, 14%, 35%);
+  --CheckBoxBorderDark: hsl(237, 14%, 26%);
+}
