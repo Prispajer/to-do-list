@@ -1,23 +1,60 @@
 @import "colors.css";
 
-body.light-theme .changeThemeButton {
+.light-theme {
+  background-color: var(--BackgroundBottomLight);
+}
+
+.light-theme header::before {
+  background-image: url("../images/bg-desktop-light.jpg");
+}
+
+.light-theme .lightButton {
   background: url(../images/icon-sun.svg);
-  background: transparent;
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
 }
 
-body.light-theme header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  min-width: 540px;
-  height: 40vh;
-  background-image: url("../images/bg-desktop-light.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: -1;
+.light-theme .todo-input {
+  width: 100%;
+  margin: 30px 0 0 0;
+  display: flex;
+  background: var(--HeaderTitle);
+  height: 60px;
+  padding: 20px;
+  align-items: center;
+}
+
+.light-theme .todo-input #add-task-input {
+  color: var(--textColorLight);
+}
+
+.light-theme .todo-container .todo-tasks .task {
+  background-color: var(--HeaderTitle);
+  border-bottom: 1px solid var(--CheckBoxAndCompleted);
+  color: var(--textColorLight);
+}
+
+.light-theme .checkbox {
+  border: 1px solid var(--CheckBoxAndCompleted);
+}
+
+.light-theme .checkbox:hover {
+  background: linear-gradient(var(--HeaderTitle), var(--HeaderTitle))
+      padding-box,
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+      border-box;
+  border: 2px solid transparent;
+}
+
+.light-theme .checkbox:checked:hover {
+  background-image: var(--CheckBackground);
+  border: none;
+}
+
+.light-theme .status-container {
+  background: var(--HeaderTitle);
 }

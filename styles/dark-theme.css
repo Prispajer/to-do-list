@@ -1,13 +1,23 @@
 @import "colors.css";
-/* Dark theme styles */
-body.dark-theme .changeThemeButton {
+
+.dark-theme {
+  background-color: var(--BackgroundBottomDark);
+}
+.dark-theme header::before {
+  background-image: url("../images/bg-desktop-dark.jpg");
+}
+
+.dark-theme .darkButton {
   background: url(../images/icon-moon.svg);
-  background: transparent;
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
 }
 
-body.dark-theme .todo-input {
+.dark-theme .todo-input {
   width: 100%;
   margin: 30px 0 0 0;
   display: flex;
@@ -17,17 +27,36 @@ body.dark-theme .todo-input {
   align-items: center;
 }
 
-body.dark-theme header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  min-width: 540px;
-  height: 40vh;
-  background-image: url("../images/bg-desktop-dark.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: -1;
+.dark-theme .todo-input #add-task-input {
+  color: var(--NotCompletedDark);
+}
+
+.dark-theme .todo-container .todo-tasks .task {
+  background-color: var(--BackgroundFieldsDark);
+  border-bottom: 1px solid var(--CompletedDark);
+  color: var(--NotCompletedDark);
+}
+
+.dark-theme .checkbox {
+  border: 1px solid var(--CheckBoxBorderDark);
+}
+
+.dark-theme .checkbox:hover {
+  background: linear-gradient(
+        var(--BackgroundFieldsDark),
+        var(--BackgroundFieldsDark)
+      )
+      padding-box,
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+      border-box;
+  border: 2px solid transparent;
+}
+
+.dark-theme .checkbox:checked:hover {
+  background-image: var(--CheckBackground);
+  border: none;
+}
+
+.dark-theme .status-container {
+  background: var(--BackgroundFieldsDark);
 }

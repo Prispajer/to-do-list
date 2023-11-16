@@ -8,15 +8,15 @@
 
   /* ### Light Theme */
   --HeaderTitle: hsl(0, 0%, 98%);
-  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --BackgroundBottomLight: hsl(236, 33%, 92%);
   --CheckBoxAndCompleted: hsl(233, 11%, 84%);
-  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --costam: hsl(236, 9%, 61%);
   --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
   --Linear1: hsl(192, 30%, 44%);
   --Linear2: hsl(280, 87%, 65%);
 
   /* ### Dark Theme */
-  --BackgroundBottom: hsl(235, 21%, 11%);
+  --BackgroundBottomDark: hsl(235, 21%, 11%);
   --BackgroundFieldsDark: hsl(235, 24%, 19%);
   --NotCompletedDark: hsl(234, 39%, 85%);
   --LightGrayishBlueHover: hsl(236, 33%, 92%); /* hover */

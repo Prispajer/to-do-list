@@ -9,6 +9,33 @@
   font-size: 18px;
 }
 
+.checkbox {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background: var(--CheckBackground);
+}
+
+.checkbox:checked::before {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background: center url(/images/icon-check.svg) no-repeat;
+  background-size: 10px 10px;
+}
+
+.todo-container .todo-tasks::-webkit-scrollbar {
+  display: none;
+}
+
 .task.checked {
   text-decoration: line-through;
   color: var(--CompletedDark);
@@ -25,52 +52,23 @@
   cursor: pointer;
   height: 50px;
   width: 50px;
+  opacity: 0;
 }
 
-.changeThemeButton {
-  height: 50px;
-  width: 50px;
-  background: url(/images/icon-sun.svg);
+.task:hover .delete-button {
+  opacity: 1;
 }
 
-.checkbox {
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--CheckBoxBorderDark);
-  border-radius: 50%;
-  outline: none;
+span {
+  padding: 0 0 0 15px;
+}
+
+span:hover {
   cursor: pointer;
 }
 
-.checkbox:hover {
-  background: linear-gradient(
-        var(--BackgroundFieldsDark),
-        var(--BackgroundFieldsDark)
-      )
-      padding-box,
-    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
-      border-box;
-  border: 2px solid transparent;
-  border-radius: 50%;
-}
-
-.checkbox:checked {
-  background: var(--CheckBackground);
-}
-
-.checkbox:checked:hover {
-  border: none;
-}
-
-.checkbox:checked::before {
-  content: "";
-  display: block;
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  background: center url(/images/icon-check.svg) no-repeat;
-  background-size: 10px 10px;
+input::placeholder {
+  color: var(--InputStatusText);
 }
 
 /* Single-use */
@@ -81,39 +79,52 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  background-color: var(--BackgroundBottom);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-width: 540px;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
 }
 
 header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  align-items: center;
 }
 
 header .title {
+  padding: 10px 0 0 0;
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 12px;
   color: var(--HeaderTitle);
 }
 
-.todo-input {
-  width: 100%;
-  margin: 30px 0 0 0;
+main {
+  width: 540px;
+  margin: 80px 0 0 0;
   display: flex;
-  background: var(--BackgroundFieldsDark);
-  height: 60px;
-  padding: 20px;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .todo-input #add-task-input {
   background: transparent;
   outline: none;
   border: none;
-  color: var(--InputStatusText);
   padding: 0 0 0 15px;
+  width: 100%;
 }
 
 .todo-container {
@@ -132,36 +143,21 @@ header .title {
   overflow-y: scroll;
 }
 
-.todo-container .todo-tasks::-webkit-scrollbar {
-  display: none;
-}
-
 .todo-container .todo-tasks .task {
   position: relative;
   width: 100%;
   height: 60px;
-  background-color: var(--BackgroundFieldsDark);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--CompletedDark);
-  color: var(--NotCompletedDark);
   padding: 0 20px 0 20px;
-}
-
-span {
-  padding: 0 0 0 15px;
-}
-
-span:hover {
-  cursor: pointer;
 }
 
 .status-container {
   width: 100%;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--BackgroundFieldsDark);
   height: 50px;
   padding: 20px;
 }
@@ -177,10 +173,19 @@ span:hover {
   background: transparent;
   border: none;
   cursor: pointer;
+  font-weight: 700;
 }
 
-.status-task {
-  gap: 10px;
+.clicked {
+  color: var(--StatusSelected);
+}
+
+.status-clear {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .status-button:hover {
@@ -190,22 +195,15 @@ span:hover {
 .items-left,
 .clear-task {
   width: 25%;
+  white-space: nowrap;
 }
 
 .status-task {
+  display: flex;
   width: 50%;
-  text-align: center;
+  gap: 40px;
 }
 
 .clear-task {
   text-align: center;
-}
-
-main {
-  width: 540px;
-  margin: 80px 0 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }

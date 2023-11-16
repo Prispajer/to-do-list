@@ -1,14 +1,18 @@
-const changeThemeButton = document.querySelector(".changeThemeButton");
+const darkButton = document.querySelector(".darkButton");
+const darkTheme = document.querySelector(".dark-theme");
 
-changeThemeButton.addEventListener("click", () => {
-  const body = document.body;
-  const isDarkTheme = body.classList.contains("dark-theme");
+darkButton.addEventListener("click", () => {
+  const isDarkTheme = darkTheme.classList.contains("dark-theme");
 
   if (isDarkTheme) {
-    body.classList.remove("dark-theme");
-    body.classList.add("light-theme");
+    darkTheme.classList.remove("dark-theme");
+    darkTheme.classList.add("light-theme");
+    darkButton.classList.remove("darkButton");
+    darkButton.classList.add("lightButton");
   } else {
-    body.classList.remove("light-theme");
-    body.classList.add("dark-theme");
+    darkTheme.classList.remove("light-theme");
+    darkTheme.classList.add("dark-theme");
+    darkButton.classList.remove("lightButton");
+    darkButton.classList.add("darkButton");
   }
 });
