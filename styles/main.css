@@ -73,6 +73,7 @@ body {
   display: flex;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   flex-direction: column;
 }
 
@@ -136,6 +137,7 @@ main {
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+  border-radius: 8px 8px 0 0;
 }
 
 .todo-container .todo-tasks .task {
@@ -155,6 +157,7 @@ main {
   align-items: center;
   height: 50px;
   padding: 20px;
+  border-radius: 0 0 8px 8px;
 }
 
 .status-button,
@@ -192,4 +195,8 @@ main {
 
 .clear-task {
   text-align: center;
+}
+
+.status-container-responsive {
+  display: none;
 }

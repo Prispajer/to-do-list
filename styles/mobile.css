@@ -1,0 +1,79 @@
+@media (max-width: 550px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  main {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .dark-theme .todo-input {
+    width: 90%;
+  }
+
+  .dark-theme .todo-container {
+    width: 90%;
+  }
+
+  .dark-theme .status-container {
+    width: 90%;
+  }
+
+  .dark-theme .status-task {
+    display: none;
+  }
+
+  .dark-theme .status-container-responsive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 60px;
+    margin: 20px 0 0 0;
+    border-radius: 8px;
+    background-color: var(--BackgroundFieldsDark);
+    width: 90%;
+  }
+
+  .light-theme .todo-input {
+    width: 90%;
+  }
+
+  .light-theme .todo-container {
+    width: 90%;
+  }
+
+  .light-theme .status-container {
+    width: 90%;
+  }
+
+  .light-theme .status-task {
+    display: none;
+  }
+
+  .light-theme .status-container-responsive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 60px;
+    margin: 20px 0 0 0;
+    border-radius: 8px;
+    background-color: var(--HeaderTitle);
+    width: 90%;
+  }
+}

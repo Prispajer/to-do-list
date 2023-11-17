@@ -9,7 +9,7 @@
 }
 
 .light-theme .lightButton {
-  background: url(../images/icon-sun.svg);
+  background: url(../images/icon-moon.svg);
   height: 50px;
   width: 50px;
   background-position: center;
@@ -26,6 +26,7 @@
   height: 60px;
   padding: 20px;
   align-items: center;
+  border-radius: 8px;
 }
 
 .light-theme .todo-input #add-task-input {
@@ -57,12 +58,12 @@
 
 .light-theme .task .checked {
   text-decoration: line-through;
-  text-decoration-color: var(--CompletedDark);
-  color: var(--CompletedDark);
+  text-decoration-color: var(--CheckBoxAndCompleted);
+  color: var(--CheckBoxAndCompleted);
 }
 
-.light-theme .task .checked .span {
-  color: var(--CompletedDark);
+.light-theme .task .checked span {
+  color: var(--CheckBoxAndCompleted);
 }
 
 .light-theme .status-container {
@@ -83,6 +84,10 @@
 
 .light-theme .status-clear {
   color: var(--completedLight);
+}
+
+.light-theme .status-clear:hover {
+  color: var(--BackgroundFieldsDark);
 }
 
 .light-theme .clicked {
