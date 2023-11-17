@@ -36,11 +36,6 @@
   display: none;
 }
 
-.task.checked {
-  text-decoration: line-through;
-  color: var(--CompletedDark);
-}
-
 .delete-button {
   position: absolute;
   right: 10px;
@@ -166,7 +161,6 @@ main {
 .items-count {
   font-size: 14px;
   font-weight: 400px;
-  color: var(--InputStatusText);
 }
 
 .status-button {
@@ -176,20 +170,12 @@ main {
   font-weight: 700;
 }
 
-.clicked {
-  color: var(--StatusSelected);
-}
-
 .status-clear {
   background: transparent;
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 400;
-}
-
-.status-button:hover {
-  color: var(--HeaderTitle);
 }
 
 .items-left,

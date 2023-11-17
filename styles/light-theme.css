@@ -55,6 +55,36 @@
   border: none;
 }
 
+.light-theme .task .checked {
+  text-decoration: line-through;
+  text-decoration-color: var(--CompletedDark);
+  color: var(--CompletedDark);
+}
+
+.light-theme .task .checked .span {
+  color: var(--CompletedDark);
+}
+
 .light-theme .status-container {
   background: var(--HeaderTitle);
+}
+
+.light-theme .items-left {
+  color: var(--completedLight);
+}
+
+.light-theme .status-button {
+  color: var(--InputStatusText);
+}
+
+.light-theme .status-button:hover {
+  color: var(--BackgroundFieldsDark);
+}
+
+.light-theme .status-clear {
+  color: var(--completedLight);
+}
+
+.light-theme .clicked {
+  color: var(--StatusSelected);
 }
