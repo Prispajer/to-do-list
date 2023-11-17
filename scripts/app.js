@@ -61,6 +61,8 @@ function deleteItem(itemId) {
   createToDoList();
 }
 
+function updateItem(list) {}
+
 function addItem(name) {
   let data;
   if (addTask.value) {
