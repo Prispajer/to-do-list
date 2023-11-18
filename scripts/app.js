@@ -1,6 +1,7 @@
 const addTask = document.querySelector("#add-task-input");
-const toDoContainer = document.querySelector(".todo-container");
-const deleteButtons = document.querySelectorAll(".delete-button");
+const todoContainer = document.querySelector(".todo-container");
+const todoInput = document.querySelector(".todo-input");
+const statusButtons = document.querySelectorAll(".status-button");
 
 let toDoList = [
   {
@@ -51,17 +52,45 @@ function createToDoList() {
         .join("")}
   </ul>
     `;
-  toDoContainer.innerHTML = htmlTemplate;
+  todoContainer.innerHTML = htmlTemplate;
+  addTask.value = "";
+}
+
+function updateView(copyOfToDo) {
+  const htmlTemplate = `
+    <ul class="todo-tasks">
+      ${copyOfToDo
+        .map(
+          (task) => `
+            <li class="task ${task.completed ? "checked" : ""}">
+              <input class="checkbox" type="checkbox" data-task-id="${
+                task.id
+              }" />
+              <span>${task.name}</span>
+              <button class="delete-button"></button>
+            </li>
+          `
+        )
+        .join("")}
+    </ul>
+  `;
+  todoContainer.innerHTML = htmlTemplate;
 }
 
 createToDoList(toDoList);
 
 function deleteItem(itemId) {
   toDoList = toDoList.filter((item) => item.id !== itemId);
-  createToDoList();
+  createToDoList(toDoList);
 }
 
-function updateItem(list) {}
+function filterItems(itemId) {
+  let copyOfToDo = [...toDoList];
+  if (itemId) {
+    copyOfToDo = copyOfToDo.filter((item) => item.id === itemId);
+  }
+  updateView(copyOfToDo);
+}
 
 function addItem(name) {
   let data;
@@ -84,8 +113,23 @@ addTask.addEventListener("keydown", (event) => {
   }
 });
 
-deleteButtons.forEach((deleteButton) => {
-  deleteButton.addEventListener("click", () => {
-    console.log("siema");
+todoContainer.addEventListener("click", (event) => {
+  const deleteButton = event.target.closest(".delete-button");
+  const checkbox = event.target.closest("checkbox");
+
+  if (deleteButton) {
+    const itemId = deleteButton.parentElement
+      .querySelector(".checkbox")
+      .getAttribute("data-task-id");
+    deleteItem(itemId);
+  }
+});
+
+statusButtons.forEach((statusButton) => {
+  statusButton.addEventListener("click", (event) => {
+    const completeButton = event.target.getAttribute("data-completed");
+    if (completeButton) {
+      filterItems(completeButton);
+    }
   });
 });

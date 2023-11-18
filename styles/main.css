@@ -134,8 +134,8 @@ main {
 
 .todo-container .todo-tasks {
   list-style-type: none;
-  height: 100%;
-  width: 100%;
+  height: inherit;
+  width: inherit;
   overflow-y: scroll;
   border-radius: 8px 8px 0 0;
 }
