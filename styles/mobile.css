@@ -29,6 +29,14 @@
     width: 90%;
   }
 
+  .dark-theme .todo-tasks {
+    width: 100%;
+  }
+
+  .dark-theme .task {
+    width: 100%;
+  }
+
   .dark-theme .status-container {
     width: 90%;
   }
@@ -55,6 +63,14 @@
 
   .light-theme .todo-container {
     width: 90%;
+  }
+
+  .light-theme .todo-tasks {
+    width: 100%;
+  }
+
+  .light-theme .task {
+    width: 100%;
   }
 
   .light-theme .status-container {

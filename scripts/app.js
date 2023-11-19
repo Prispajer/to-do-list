@@ -2,6 +2,7 @@ const addTask = document.querySelector("#add-task-input");
 const todoContainer = document.querySelector(".todo-container");
 const todoInput = document.querySelector(".todo-input");
 const statusButtons = document.querySelectorAll(".status-button");
+const clearCompleted = document.querySelector(".clear-task");
 
 let toDoList = [
   {
@@ -12,7 +13,7 @@ let toDoList = [
   {
     id: 2,
     name: "Jog around the park 3x",
-    completed: false,
+    completed: true,
   },
   {
     id: 3,
@@ -56,10 +57,10 @@ function createToDoList() {
   addTask.value = "";
 }
 
-function updateView(copyOfToDo) {
+function updateView(filteredTasks) {
   const htmlTemplate = `
     <ul class="todo-tasks">
-      ${copyOfToDo
+      ${filteredTasks
         .map(
           (task) => `
             <li class="task ${task.completed ? "checked" : ""}">
@@ -81,15 +82,19 @@ createToDoList(toDoList);
 
 function deleteItem(itemId) {
   toDoList = toDoList.filter((item) => item.id !== itemId);
-  createToDoList(toDoList);
+  updateView(toDoList);
 }
 
-function filterItems(itemId) {
-  let copyOfToDo = [...toDoList];
-  if (itemId) {
-    copyOfToDo = copyOfToDo.filter((item) => item.id === itemId);
+function filterTasks(list, isCompleted, isActive, allTasks) {
+  if (isCompleted) {
+    return list.filter((task) => task.completed);
   }
-  updateView(copyOfToDo);
+  if (isActive) {
+    return list.filter((task) => !task.completed);
+  }
+  if (allTasks) {
+    return list;
+  }
 }
 
 function addItem(name) {
@@ -115,21 +120,42 @@ addTask.addEventListener("keydown", (event) => {
 
 todoContainer.addEventListener("click", (event) => {
   const deleteButton = event.target.closest(".delete-button");
-  const checkbox = event.target.closest("checkbox");
+  const taskElement = event.target.closest(".task");
 
-  if (deleteButton) {
-    const itemId = deleteButton.parentElement
+  if (deleteButton && taskElement) {
+    const itemId = taskElement
       .querySelector(".checkbox")
       .getAttribute("data-task-id");
     deleteItem(itemId);
   }
 });
 
+let completedTasks = [];
+
 statusButtons.forEach((statusButton) => {
-  statusButton.addEventListener("click", (event) => {
-    const completeButton = event.target.getAttribute("data-completed");
-    if (completeButton) {
-      filterItems(completeButton);
+  statusButton.addEventListener("click", () => {
+    const isCompleted = statusButton.classList.contains("Completed");
+    const isActive = statusButton.classList.contains("Active");
+    const allTasks = statusButton.classList.contains("All");
+    const filteredTasks = filterTasks(
+      toDoList,
+      isCompleted,
+      isActive,
+      allTasks
+    );
+    if (allTasks) {
+      updateView(toDoList);
+    } else {
+      updateView(filteredTasks);
     }
   });
+});
+
+clearCompleted.addEventListener("click", () => {
+  if (toDoList === null) {
+    return;
+  } else {
+    toDoList = toDoList.filter((task) => !task.completed);
+    updateView(toDoList);
+  }
 });
