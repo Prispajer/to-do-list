@@ -3,6 +3,7 @@ const todoContainer = document.querySelector(".todo-container");
 const todoInput = document.querySelector(".todo-input");
 const statusButtons = document.querySelectorAll(".status-button");
 const clearCompleted = document.querySelector(".clear-task");
+let completedTasks = [];
 
 let toDoList = [
   {
@@ -39,30 +40,10 @@ let toDoList = [
 
 function createToDoList() {
   const htmlTemplate = `
-  <ul class="todo-tasks">
-      ${toDoList
-        .map(
-          (task) => `
-          <li class="task ${task.completed ? "checked" : ""}">
-            <input class="checkbox" type="checkbox" data-task-id="${task.id}" />
-            <span>${task.name}</span>
-            <button class="delete-button"></button>
-          </li>
-      `
-        )
-        .join("")}
-  </ul>
-    `;
-  todoContainer.innerHTML = htmlTemplate;
-  addTask.value = "";
-}
-
-function updateView(filteredTasks) {
-  const htmlTemplate = `
     <ul class="todo-tasks">
-      ${filteredTasks
-        .map(
-          (task) => `
+        ${toDoList
+          .map(
+            (task) => `
             <li class="task ${task.completed ? "checked" : ""}">
               <input class="checkbox" type="checkbox" data-task-id="${
                 task.id
@@ -70,11 +51,33 @@ function updateView(filteredTasks) {
               <span>${task.name}</span>
               <button class="delete-button"></button>
             </li>
-          `
-        )
-        .join("")}
+        `
+          )
+          .join("")}
     </ul>
-  `;
+      `;
+  todoContainer.innerHTML = htmlTemplate;
+  addTask.value = "";
+}
+
+function updateView(filteredTasks) {
+  const htmlTemplate = `
+      <ul class="todo-tasks">
+        ${filteredTasks
+          .map(
+            (task) => `
+              <li class="task ${task.completed ? "checked" : ""}">
+                <input class="checkbox" type="checkbox" data-task-id="${
+                  task.id
+                }" />
+                <span>${task.name}</span>
+                <button class="delete-button"></button>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
+    `;
   todoContainer.innerHTML = htmlTemplate;
 }
 
@@ -85,15 +88,15 @@ function deleteItem(itemId) {
   updateView(toDoList);
 }
 
-function filterTasks(list, isCompleted, isActive, allTasks) {
+function filterTasks(array, isCompleted, isActive, allTasks) {
   if (isCompleted) {
-    return list.filter((task) => task.completed);
+    return array.filter((task) => task.completed);
   }
   if (isActive) {
-    return list.filter((task) => !task.completed);
+    return array.filter((task) => !task.completed);
   }
   if (allTasks) {
-    return list;
+    return array;
   }
 }
 
@@ -119,18 +122,16 @@ addTask.addEventListener("keydown", (event) => {
 });
 
 todoContainer.addEventListener("click", (event) => {
+  const targetCheckbox = event.target.closest(".checkbox");
   const deleteButton = event.target.closest(".delete-button");
-  const taskElement = event.target.closest(".task");
 
-  if (deleteButton && taskElement) {
-    const itemId = taskElement
-      .querySelector(".checkbox")
-      .getAttribute("data-task-id");
-    deleteItem(itemId);
+  if (deleteButton) {
+    const taskId = parseInt(
+      deleteButton.closest(".task").querySelector(".checkbox").dataset.taskId
+    );
+    deleteItem(taskId);
   }
 });
-
-let completedTasks = [];
 
 statusButtons.forEach((statusButton) => {
   statusButton.addEventListener("click", () => {
@@ -152,10 +153,10 @@ statusButtons.forEach((statusButton) => {
 });
 
 clearCompleted.addEventListener("click", () => {
-  if (toDoList === null) {
-    return;
-  } else {
+  if (toDoList) {
     toDoList = toDoList.filter((task) => !task.completed);
+    updateView(completedTasks);
+  } else {
     updateView(toDoList);
   }
 });
