@@ -3,6 +3,7 @@ const todoContainer = document.querySelector(".todo-container");
 const todoInput = document.querySelector(".todo-input");
 const statusButtons = document.querySelectorAll(".status-button");
 const clearCompleted = document.querySelector(".clear-task");
+const itemsCountContainer = document.querySelector(".items-left");
 let completedTasks = [];
 
 let toDoList = [
@@ -60,10 +61,11 @@ function createToDoList() {
   addTask.value = "";
 }
 
-function updateView(filteredTasks) {
+function updateView(array, buttonText) {
+  taskLeft(buttonText);
   const htmlTemplate = `
       <ul class="todo-tasks">
-        ${filteredTasks
+        ${array
           .map(
             (task) => `
               <li class="task ${task.completed ? "checked" : ""}">
@@ -88,16 +90,11 @@ function deleteItem(itemId) {
   updateView(toDoList);
 }
 
-function filterTasks(array, isCompleted, isActive, allTasks) {
-  if (isCompleted) {
-    return array.filter((task) => task.completed);
-  }
-  if (isActive) {
-    return array.filter((task) => !task.completed);
-  }
-  if (allTasks) {
-    return array;
-  }
+function CompletedTasks(array) {
+  return array.filter((task) => task.completed);
+}
+function ActiveTasks(array) {
+  return array.filter((task) => !task.completed);
 }
 
 function addItem(name) {
@@ -115,6 +112,21 @@ function addItem(name) {
   createToDoList();
 }
 
+function taskLeft(buttonText) {
+  const itemCount = document.createElement("p");
+  const itemsCompleted = toDoList.filter((task) => task.completed).length;
+  const listSize = toDoList.length;
+  if (buttonText == "All") {
+    itemCount.textContent = `${listSize} left`;
+  } else if (buttonText == "Active") {
+    itemCount.textContent = `${listSize - itemsCompleted} active`;
+  } else if (buttonText == "Completed") {
+    itemCount.textContent = `${itemsCompleted} completed`;
+  }
+
+  itemsCountContainer.innerHTML = "";
+  itemsCountContainer.appendChild(itemCount);
+}
 addTask.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     addItem(addTask.value);
@@ -131,25 +143,6 @@ todoContainer.addEventListener("click", (event) => {
     );
     deleteItem(taskId);
   }
-});
-
-statusButtons.forEach((statusButton) => {
-  statusButton.addEventListener("click", () => {
-    const isCompleted = statusButton.classList.contains("Completed");
-    const isActive = statusButton.classList.contains("Active");
-    const allTasks = statusButton.classList.contains("All");
-    const filteredTasks = filterTasks(
-      toDoList,
-      isCompleted,
-      isActive,
-      allTasks
-    );
-    if (allTasks) {
-      updateView(toDoList);
-    } else {
-      updateView(filteredTasks);
-    }
-  });
 });
 
 clearCompleted.addEventListener("click", () => {
