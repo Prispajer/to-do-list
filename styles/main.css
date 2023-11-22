@@ -66,6 +66,10 @@ input::placeholder {
   color: var(--InputStatusText);
 }
 
+p {
+  font-size: 14px;
+}
+
 /* Single-use */
 
 body {
