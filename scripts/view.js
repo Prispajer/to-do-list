@@ -30,7 +30,6 @@ let toDoList = [
     completed: false,
   },
 ];
-
 function createToDoList() {
   taskLeftText("All");
   const htmlTemplate = `
@@ -41,7 +40,7 @@ function createToDoList() {
             <li class="task ${task.completed ? "checked" : ""}">
               <input class="checkbox" type="checkbox" data-task-id="${
                 task.id
-              }" />
+              }" ${task.completed ? "checked" : ""}/>
               <span>${task.name}</span>
               <button class="delete-button"></button>
             </li>
@@ -49,9 +48,31 @@ function createToDoList() {
           )
           .join("")}
     </ul>
-      `;
+  `;
   todoContainer.innerHTML = htmlTemplate;
   addTaskInput.value = "";
+}
+
+function refreshArray(array, buttonText) {
+  taskLeftText(buttonText);
+  const htmlTemplate = `
+      <ul class="todo-tasks">
+        ${array
+          .map(
+            (task) => `
+            <li class="task ${task.completed ? "checked" : ""}">
+            <input class="checkbox" type="checkbox" data-task-id="${task.id}" ${
+              task.completed ? "checked" : ""
+            }/>
+            <span>${task.name}</span>
+            <button class="delete-button"></button>
+          </li>
+            `
+          )
+          .join("")}
+      </ul>
+    `;
+  todoContainer.innerHTML = htmlTemplate;
 }
 
 function updateView() {
@@ -63,26 +84,4 @@ function updateView() {
   } else if (buttonText === "All") {
     refreshArray(toDoList, "All");
   } else refreshArray(toDoList, "All");
-}
-
-function refreshArray(array, buttonText) {
-  taskLeftText(buttonText);
-  const htmlTemplate = `
-      <ul class="todo-tasks">
-        ${array
-          .map(
-            (task) => `
-              <li class="task ${task.completed ? "checked" : ""}">
-                <input class="checkbox" type="checkbox" data-task-id="${
-                  task.id
-                }" />
-                <span>${task.name}</span>
-                <button class="delete-button"></button>
-              </li>
-            `
-          )
-          .join("")}
-      </ul>
-    `;
-  todoContainer.innerHTML = htmlTemplate;
 }
