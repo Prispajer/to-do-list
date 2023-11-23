@@ -9,6 +9,7 @@ createToDoList();
 
 addTaskInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
+    event.preventDefault();
     addItem(addTaskInput.value);
     updateView("All");
   }
@@ -16,6 +17,7 @@ addTaskInput.addEventListener("keydown", (event) => {
 
 todoContainer.addEventListener("click", (event) => {
   const deleteButton = event.target.closest(".delete-button");
+  const checkbox = event.target.closest(".checkbox");
 
   if (deleteButton) {
     const taskId = parseInt(
@@ -32,6 +34,18 @@ todoContainer.addEventListener("click", (event) => {
           updateView();
         }
       });
+    }
+  }
+
+  if (checkbox) {
+    const toggleCheckbox = checkbox.closest(".task");
+
+    if (toggleCheckbox) {
+      if (!toggleCheckbox.classList.contains("checked")) {
+        toggleCheckbox.classList.add("checked");
+      } else {
+        toggleCheckbox.classList.remove("checked");
+      }
     }
   }
 });

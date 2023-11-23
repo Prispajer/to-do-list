@@ -58,13 +58,13 @@
   border: none;
 }
 
-.dark-theme .task .checked {
+.dark-theme .checked {
   text-decoration: line-through;
   text-decoration-color: var(--CompletedDark);
   color: var(--CompletedDark);
 }
 
-.dark-theme .task .checked span {
+.dark-theme .checked span {
   color: var(--CompletedDark);
 }
 

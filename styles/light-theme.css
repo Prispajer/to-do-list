@@ -56,13 +56,13 @@
   border: none;
 }
 
-.light-theme .task .checked {
+.light-theme .checked {
   text-decoration: line-through;
   text-decoration-color: var(--CheckBoxAndCompleted);
   color: var(--CheckBoxAndCompleted);
 }
 
-.light-theme .task .checked span {
+.light-theme .checked span {
   color: var(--CheckBoxAndCompleted);
 }
 

@@ -9,6 +9,10 @@ function clearCompletedTasks(array) {
   return array.filter((task) => !task.completed);
 }
 
+function sortCompleted(array) {
+  return array.filter((task) => task.completed);
+}
+
 function deleteTask(array, taskId) {
   return (toDoList = array.filter((task) => task.id !== taskId));
 }
