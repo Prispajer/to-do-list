@@ -30,11 +30,13 @@ let toDoList = [
     completed: false,
   },
 ];
-function createToDoList() {
-  taskLeftText("All");
+
+function createToDoList(array) {
+  buttonText = getButtonText();
+  taskLeftText(buttonText);
   const htmlTemplate = `
     <ul class="todo-tasks">
-        ${toDoList
+        ${array
           .map(
             (task) => `
             <li class="task ${task.completed ? "checked" : ""}">
@@ -53,35 +55,11 @@ function createToDoList() {
   addTaskInput.value = "";
 }
 
-function refreshArray(array, buttonText) {
-  taskLeftText(buttonText);
-  const htmlTemplate = `
-      <ul class="todo-tasks">
-        ${array
-          .map(
-            (task) => `
-            <li class="task ${task.completed ? "checked" : ""}">
-            <input class="checkbox" type="checkbox" data-task-id="${task.id}" ${
-              task.completed ? "checked" : ""
-            }/>
-            <span>${task.name}</span>
-            <button class="delete-button"></button>
-          </li>
-            `
-          )
-          .join("")}
-      </ul>
-    `;
-  todoContainer.innerHTML = htmlTemplate;
-}
-
 function updateView() {
   const buttonText = getButtonText();
   if (buttonText === "Active") {
-    refreshArray(ActiveTasks(toDoList), "Active");
+    createToDoList(ActiveTasks());
   } else if (buttonText === "Completed") {
-    refreshArray(CompletedTasks(toDoList), "Completed");
-  } else if (buttonText === "All") {
-    refreshArray(toDoList, "All");
-  } else refreshArray(toDoList, "All");
+    createToDoList(CompletedTasks());
+  } else createToDoList(toDoList);
 }

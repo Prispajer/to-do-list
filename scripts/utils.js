@@ -1,22 +1,3 @@
-function CompletedTasks(array) {
-  return array.filter((task) => task.completed);
-}
-function ActiveTasks(array) {
-  return array.filter((task) => !task.completed);
-}
-
-function clearCompletedTasks(array) {
-  return array.filter((task) => !task.completed);
-}
-
-function sortCompleted(array) {
-  return array.filter((task) => task.completed);
-}
-
-function deleteTask(array, taskId) {
-  return (toDoList = array.filter((task) => task.id !== taskId));
-}
-
 function addItem(name) {
   let data;
   if (addTaskInput.value) {
@@ -29,6 +10,32 @@ function addItem(name) {
     return;
   }
   toDoList.push(data);
+}
+
+function ActiveTasks() {
+  return toDoList.filter((task) => !task.completed);
+}
+
+function CompletedTasks() {
+  return toDoList.filter((task) => task.completed);
+}
+
+function setActiveTask(taskId) {
+  let task = toDoList.find((task) => task.id === taskId);
+  task.completed = false;
+}
+
+function setCompletedTask(taskId) {
+  let task = toDoList.find((task) => task.id === taskId);
+  task.completed = true;
+}
+
+function deleteTask(taskId) {
+  return (toDoList = toDoList.filter((task) => task.id !== taskId));
+}
+
+function clearCompletedTasks() {
+  return toDoList.filter((task) => !task.completed);
 }
 
 function getButtonText() {
